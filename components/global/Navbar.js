@@ -14,8 +14,7 @@ import { selectCart, setIsCartOpen } from '../../redux/cartSlice';
 export default function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
-  // const cart = useSelector(selectCart);
-  const cart = [1, 2];
+  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <Box
@@ -36,7 +35,6 @@ export default function Navbar() {
         display='flex'
         justifyContent='space-between'
         alignItems='center'
-        backgroundColor='gray'
       >
         <Box>
           <Link href='/'>ECOMMER</Link>
@@ -69,7 +67,7 @@ export default function Navbar() {
           >
             <IconButton
               sx={{ color: 'black' }}
-              onClick={() => dispatch(setIsCartOpen({}))}
+              onClick={() => dispatch(setIsCartOpen(true))}
             >
               <ShoppingBagOutlined />
             </IconButton>
